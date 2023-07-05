@@ -134,14 +134,19 @@ To enforce a strong password policy, you need to fulfill the following condition
 
 3. Save the changes and exit the text editor.
 
-4. To enforce password complexity requirements and restrictions, you can use tools like pam_pwquality or libpam-pwquality. Install the package if it's not already available:
+4. To enforce password complexity requirements and restrictions, you can use tools like pam_pwquality or libpam-pwquality.
+   
+        PAM (Pluggable Authentication Modules) allows system administrators to choose how applications authenticate users.
+           https://www.debian.org/doc/manuals/securing-debian-manual/ch04s11.en.html
+   
+ Install the package if it's not already available:
 
         sudo apt-get install libpam-pwquality
-5. Edit the password policy configuration file:
+6. Edit the password policy configuration file:
 
         sudo nano /etc/pam.d/common-password
 
-6. Add or modify the line containing pam_pwquality.so to include the desired password complexity options. For example:
+7. Add or modify the line containing pam_pwquality.so to include the desired password complexity options. For example:
 
         password    requisite    pam_pwquality.so retry=3 minlen=10 lcredit=-1 ucredit=-1 dcredit=-1 maxrepeat=3 usercheck=0 difok=7 reject_username enforce_for_root
 
