@@ -200,3 +200,57 @@ To establish a strict configuration within your sudo group, you need to fulfill 
  Replace "Your custom error message here" with your desired custom error message.
 
 3. Save the changes and exit the editor.
+
+
+## System Information Broadcast Script
+
+This script is designed to periodically gather system information and broadcast it to all terminals using the `wall` command. It retrieves various system details such as OS architecture, kernel version, CPU information, memory usage, disk usage, network information, and more.
+
+Usage:
+1. Make sure the script is executable by running the command: `chmod +x script.sh`
+2. Execute the script: `./script.sh`
+3. The script will start gathering system information and broadcasting it to all terminals every 10 minutes.
+
+Script Details:
+- The script is written in Bash and runs in an infinite loop using the `while true` construct.
+- System information is obtained using various Linux command-line tools and stored in variables.
+- The gathered information is formatted into a message that includes details such as architecture, kernel version, CPU usage, memory usage, disk usage, network information, etc.
+- The `wall` command is used to broadcast the message to all terminals, ensuring that all users are informed of the system information.
+- After broadcasting the message, the script waits for 10 minutes using the `sleep` command before gathering and broadcasting the next set of information.
+
+Information Gathered:
+1. System Information:
+   - OS Architecture: The architecture of the operating system.
+   - Kernel Version: The version of the Linux kernel.
+   - Physical Processors: The number of physical processors in the system.
+   - Virtual Processors: The number of virtual processors in the system.
+
+2. Memory Usage:
+   - Memory Total: The total amount of memory in the system.
+   - Memory Used: The amount of memory currently in use.
+   - Memory Percentage: The percentage of memory used.
+   - Memory Available: The amount of available memory.
+
+3. Disk Usage:
+   - Disk Total: The total disk space used by all partitions (excluding the boot partition).
+   - Disk Used: The total disk space used in megabytes (excluding the boot partition).
+   - Percentage Disk Usage: The percentage of disk space used by all partitions (excluding the boot partition).
+
+4. CPU Usage:
+   - CPU Usage: The overall CPU usage percentage.
+
+5. Other System Information:
+   - Last Reboot: The timestamp of the last system reboot.
+   - LVM Status: The status of the Logical Volume Manager (LVM) - either "Active" or "Inactive".
+   - Active Connections: The number of active network connections.
+   - Active Users: The number of currently logged-in users.
+   - IPv4 Address: The IPv4 address of the system.
+   - MAC Address: The MAC address of the system.
+   - Sudo Commands Executed: The number of sudo commands executed.
+
+Note:
+- This script may require root privileges to execute certain commands such as `lvs`, `ss`, and `sudo`.
+- Make sure to review and understand the script before running it on your system.
+- Use the script responsibly and only on systems where broadcasting system information is allowed and appropriate.
+
+
